@@ -6,7 +6,10 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "test": "live-server --open=./SpecRunner.html --port=8081",
+    "test": "live-server --open=./SpecRunner.html --port=8081 babel . --out-dir compiled --presets=es2015,react --ignore=node_modules,compiled --source-maps inline --watch;",
+    "start": "babel . --out-dir compiled --presets=es2015,react --ignore=node_modules,compiled --source-maps inline --watch;",
+    "live": "live-server",
+    "live-render": "npm run start & npm run live",
     "postinstall": "curl -s https://raw.githubusercontent.com/reactorcore/pomander/master/bin/install | bash"
   },
   "dependencies": {
