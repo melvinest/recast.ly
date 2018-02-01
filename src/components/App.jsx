@@ -41,7 +41,9 @@ class App extends React.Component {
   populateResults (searchResults) {
 
     this.setState({
-      videos: searchResults
+      videos: searchResults,
+      selectedVideo: searchResults[0]
+      
     });
   }
   
@@ -49,9 +51,9 @@ class App extends React.Component {
     
     setInterval(() => {
       if ($('.form-control').val() !== undefined && $('.form-control').val().length > 0){
-        this.handleSearch()
+        this.handleSearch();
       }
-    }, 500)
+    }, 500);
   }
   
   handleSearch (event) {
@@ -70,15 +72,11 @@ class App extends React.Component {
     
 
     window.searchYouTube(options, this.populateResults.bind(this));
-    
-    // this.setState({
-    //   videos: searchresult
-    // });
     if (event === 'search') {
       $('.form-control').val('');  
+      
     }
-    
-  }
+   } 
   
   render() {
     return (
