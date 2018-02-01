@@ -21,7 +21,9 @@
 
 class App extends React.Component {
   constructor() {
+    console.log(window);
     super();
+    
     this.state = {
       videos: window.exampleVideoData,
       selectedVideo: window.exampleVideoData[0]
@@ -35,13 +37,29 @@ class App extends React.Component {
     });
   }
   
-  handleSearch (props) {
-    console.log(props);
-    $('.form-control').val('');
+  populateResults (searchResults) {
+    console.log(searchResults);
     this.setState({
-      videos: window.searchYoutube(options, callback)
+      videos: searchResults
     });
+  }
+  
+  handleSearch (query) {
+    var options = {
+      part: 'snippet',
+      order: 'relevance',
+      maxResults: 5,
+      q: query,
+      key: window.YOUTUBE_API_KEY,      
+      embeddable: true,      
+    };    
     
+    $('.form-control').val('');
+    var searchresult = window.searchYouTube(options, this.populateResults.bind(this))
+    console.log(searchresult)
+    this.setState({
+      videos: searchresult
+    });
   }
   
   render() {
