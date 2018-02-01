@@ -29,6 +29,7 @@ class App extends React.Component {
       selectedVideo: window.exampleVideoData[0]
       
     };
+    this.liveResult();
 
   }
   selectVideo (props) {
@@ -44,7 +45,19 @@ class App extends React.Component {
     });
   }
   
-  handleSearch () {
+  liveResult() {
+    
+    setInterval(() => {
+      if ($('.form-control').val() !== undefined && $('.form-control').val().length > 0){
+        this.handleSearch()
+      }
+    }, 500)
+  }
+  
+  handleSearch (event) {
+    //if searchbar is not of zero length, 
+    //kick off handleSearch with at a setInterval()
+    
 
     var options = {
       part: 'snippet',
@@ -61,7 +74,10 @@ class App extends React.Component {
     // this.setState({
     //   videos: searchresult
     // });
-    $('.form-control').val('');
+    if (event === 'search') {
+      $('.form-control').val('');  
+    }
+    
   }
   
   render() {
