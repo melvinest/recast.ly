@@ -20,8 +20,19 @@
 // `var` declarations will only exist globally where explicitly defined
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
+    this.state = {
+      videos: window.exampleVideoData,
+      selectedVideo: window.exampleVideoData[0]
+      
+    }
+
+  }
+  selectVideo (props) {
+    this.setState({
+      selectedVideo: props
+    })
   }
   
   render() {
@@ -29,15 +40,15 @@ class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <Search />
+            <Search  />
           </div>
         </nav>
         <div className="row">
           <div className="col-md-7">
-            <VideoPlayer video={this.props.videos[0]} />
+            <VideoPlayer video={this.state.selectedVideo} />
           </div>
           <div className="col-md-5">
-            <VideoList videos={this.props.videos} />
+            <VideoList selectVideo={this.selectVideo.bind(this)} videos={this.state.videos}/>
           </div>
         </div>
       </div>
