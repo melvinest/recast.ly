@@ -26,13 +26,22 @@ class App extends React.Component {
       videos: window.exampleVideoData,
       selectedVideo: window.exampleVideoData[0]
       
-    }
+    };
 
   }
   selectVideo (props) {
     this.setState({
       selectedVideo: props
-    })
+    });
+  }
+  
+  handleSearch (props) {
+    console.log(props);
+    $('.form-control').val('');
+    this.setState({
+      videos: window.searchYoutube(options, callback)
+    });
+    
   }
   
   render() {
@@ -40,7 +49,7 @@ class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <Search  />
+            <Search  handleSearch={this.handleSearch.bind(this)} />
           </div>
         </nav>
         <div className="row">
