@@ -1,13 +1,13 @@
 var Search = (props) => {
   
   
-  var searchCriteria = $('.form-control').val();
+  // var searchCriteria = $('.form-control').val();
 
    
   return (
     <div className="search-bar form-inline">
-      <input onKeyDown={ (e) => e.key === 'Enter' ? props.handleSearch(searchCriteria): null} className="form-control" type="text" />
-      <button onClick={() => props.handleSearch(searchCriteria)} className="btn hidden-sm-down">
+      <input onKeyDown={ (e) => e.key === 'Enter' ? props.handleSearch(): null}  className="form-control" type="text" />
+      <button onClick={() => props.handleSearch()} className="btn hidden-sm-down">
         <span className="glyphicon glyphicon-search"></span>
       </button>
     </div>

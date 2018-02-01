@@ -38,28 +38,30 @@ class App extends React.Component {
   }
   
   populateResults (searchResults) {
-    console.log(searchResults);
+
     this.setState({
       videos: searchResults
     });
   }
   
-  handleSearch (query) {
+  handleSearch () {
+
     var options = {
       part: 'snippet',
       order: 'relevance',
       maxResults: 5,
-      q: query,
+      q: $('.form-control').val(),
       key: window.YOUTUBE_API_KEY,      
       embeddable: true,      
     };    
     
+
+    window.searchYouTube(options, this.populateResults.bind(this));
+    
+    // this.setState({
+    //   videos: searchresult
+    // });
     $('.form-control').val('');
-    var searchresult = window.searchYouTube(options, this.populateResults.bind(this))
-    console.log(searchresult)
-    this.setState({
-      videos: searchresult
-    });
   }
   
   render() {

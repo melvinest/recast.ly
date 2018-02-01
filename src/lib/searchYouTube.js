@@ -6,13 +6,13 @@ var searchYouTube = (options, callback) => {
     
     contentType: 'application/json',
     success: (data) => {
-      console.log(callback);
+
       callback(data.items);
     },
     error: (data) => {
       console.log(`error ${data}`);
     }
   });
-}
+};
 window.searchYouTube = searchYouTube;
 
