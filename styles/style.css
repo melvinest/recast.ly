@@ -8,7 +8,9 @@ body {
   background: #fff;
   margin-bottom: 20px;
 }
-
+label {
+  margin:0px 10px;
+}
 .navbar img {
   height: 40px;
   width: 50px;

@@ -6,10 +6,12 @@ var Search = (props) => {
    
   return (
     <div className="search-bar form-inline">
-      <input onKeyDown={ (e) => e.key === 'Enter' ? props.handleSearch('search'): null}  className="form-control" type="text" />
+      <input onKeyDown={ (e) => e.key === 'Enter' ? props.handleSearch('search'): props.liveResult()}  className="form-control" type="text" />
       <button onClick={() => props.handleSearch('search')} className="btn hidden-sm-down">
         <span className="glyphicon glyphicon-search"></span>
       </button>
+      <input onClick={() => props.toggleAutoPlay()} id="autoPlayCb" type="checkbox" text="Toggle" />
+      <label for="autoPlayCb">AutoPlay</label>
     </div>
   );
 };
